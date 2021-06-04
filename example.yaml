@@ -1,0 +1,18 @@
+masterServer: "http://host:8080"
+masterAlloc: false
+secret: mytimefabricsecret
+
+network:
+  type: nat
+  portRange: 1000-5000
+  excludedPorts: 3000
+
+storage:
+  type: nas
+  dir: /nfs/mydir:/home/irteam/mystorage,/nfs/yourdir:/home/irteam/yourstorage
+
+database:
+  url: http://localhost:3306
+  user: mysqluser
+  secret: mysqlpw
+
