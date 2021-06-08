@@ -9,6 +9,7 @@ import (
 )
 
 func main() {
+
 	configFile, _ := filepath.Abs("example.yaml")
 	yamlFile, err := ioutil.ReadFile(configFile)
 	var config config.TimeFabricConfig
