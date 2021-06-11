@@ -3,6 +3,6 @@ package common
 type StorageMappingType int8
 
 const (
-	VOLUME = iota
-	BIND
+	VOLUME_STORAGE = iota
+	BIND_STORAGE
 )

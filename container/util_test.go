@@ -5,6 +5,20 @@ import (
 	"testing"
 )
 
+func Test_buildBindMountMappingOption(t *testing.T) {
+	sourcePath := "/294t/nfs/foodir"
+	targetPath := "/home/irteam/dir"
+	result := buildBindMountMappingOption(sourcePath, targetPath)
+	assert.Equal(t, "--mount type=bind,source=\"/294t/nfs/foodir\",target=/home/irteam/dir ", result)
+}
+
+func Test_buildBindVolumeMappingOption(t *testing.T) {
+	sourcePath := "/294t/nfs/foodir"
+	targetPath := "/home/irteam/dir"
+	result := buildVolumeMappingOption(sourcePath, targetPath)
+	assert.Equal(t, "--mount type=volume,source=\"/294t/nfs/foodir\",target=/home/irteam/dir ", result)
+}
+
 func Test_buildPortMappingOption(t *testing.T) {
 	portCreates := []PortCreate{
 		{"ssh", 22, 22,},

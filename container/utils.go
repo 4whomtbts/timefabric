@@ -2,16 +2,40 @@ package container
 
 import (
 	"fmt"
-	"github.com/4whomtbts/timefabric/common"
 	"strconv"
 )
 
 /*
-	@ userName : The id when user type to sign in timeFabric console site
-	@ mappedPath : The path volume is mapped in container (ie. /home/irteam/foo
+	Maybe.. number granted options
+	such as "shm-size, unlimit memlock, ..etc" needs to be handled differently
+	Node should check and validate if granted numbers are reasonable and supportable.
+
+var SUPPORTED_CUSTOMIZABLE_CONT_OPTS []string
+SUPPORTED_CUSTOMIZABLE_CONT_OPTS {
+	"--cap-add", "--ipc", "--shm-size", "--unlimit memlock", "--unlimit stack"
+}
+
+*/
+/*
+	 It extracts the options that timefabric allows to customize.
+	 Then, It returns the extracted options as result
  */
-func buildStorageMappingOption(storageType common.StorageMappingType, userName string, mappedPath string) string {
+func filterNonCustomizableOption(customOption string) string {
+	/*
+	result := ""
+	for idx, val := range  {
+
+	}
+	 */
 	return ""
+}
+
+func buildBindMountMappingOption(sourcePath, targetPath string) string {
+	return fmt.Sprintf("--mount type=bind,source=\"%s\",target=%s ", sourcePath, targetPath)
+}
+
+func buildVolumeMappingOption(sourcePath, targetPath string) string {
+	return fmt.Sprintf("--mount type=volume,source=\"%s\",target=%s ", sourcePath, targetPath)
 }
 
 func buildPortMappingOption(ports []PortCreate) string {
