@@ -1,7 +1,7 @@
 Timefacbric 
 
 Supports container based private cloud for AI lab in college and SMEs that wants to make AI testbed 'easily,conveniently'.
-This project primarily focuses on supporting 
+
 
 Features
 1. Create/Delete container 
