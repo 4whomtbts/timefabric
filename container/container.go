@@ -20,6 +20,7 @@ type Container struct {
 type ContainerCreate struct {
 	ImageName string `json:"image_name"`
 	GpuSlots []int `json:"gpu_slots"`
+	Ports []PortCreate `json:"ports"`
 	CustomOption string `json:"custom_option"`
 	UserName string `json:"user_name"`
 }

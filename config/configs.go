@@ -1,5 +1,6 @@
 package config
 
+import "github.com/4whomtbts/timefabric/common"
 
 type TimeFabricConfig struct {
 	MasterServer string `yaml:"masterServer"`
@@ -36,13 +37,23 @@ type StorageConfig struct {
 	 * when 'local': persistent storage located on specified location of container host machine
 	 * when 'nas': persistent storage is nas. bind mapping container with specified nas directory
 	 */
-	StorageType string `yaml:"type"`
+	StorageType common.StorageType `yaml:"type"`
+
 	/*
-	 * directory mapping for docker volume.
-	 * It should be form of 'HOST_DIR:CONTAINER_DIR'
+	 * static storage mapping for docker storage mapping
+	 * It should be form of 'HOST_DIR:CONTAINER_DIR
 	 * examples : /nfs/mydir:/home/irteam/mystorage,/nfs/yourdir:/home/irteam/yourstorage
 	 */
-	Directories string `yaml:"dir"`
+	StaticMapping string `yaml:"staticMapping"`
+
+	/*
+	 * dynamic storage mapping for docker storage mapping
+	 * It should be form of 'srcPath1,srcPath2,srcPathX'
+	 * These values are used when timefabric creates container volume mapping option
+	 * Each of the value is used as base path of HOST_DIR
+	 * examples : /nfs/mydir:/home/irteam,/nfs/yourdir:/home/irteam/foo
+	 */
+	DynamicMapping string `yaml:"dynamicMapping"`
 
 }
 

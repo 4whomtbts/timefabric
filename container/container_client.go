@@ -12,12 +12,13 @@ import (
 )
 
 type ContainerClient struct {
+	globalCfg *config.TimeFabricConfig
 	cfg *config.ContainerConfig
 	dockerCtx context.Context
 	dockerClient *client.Client
 }
 
-func NewContainerClient(containerConfig *config.ContainerConfig) *ContainerClient {
+func NewContainerClient(globalConfig *config.TimeFabricConfig, containerConfig *config.ContainerConfig) *ContainerClient {
 	dockerClient, err := client.NewClientWithOpts(client.FromEnv)
 	ctx := context.Background()
 	if err != nil {
@@ -27,7 +28,8 @@ func NewContainerClient(containerConfig *config.ContainerConfig) *ContainerClien
 
 	dockerClient.NegotiateAPIVersion(ctx)
 	return &ContainerClient{
-			containerConfig,
+		globalConfig,
+		containerConfig,
 		ctx,
 		dockerClient,
 	}
@@ -41,7 +43,7 @@ func (cc *ContainerClient) buildImage() error {
 func toTimeFabricPortType(ports []types.Port) []Port {
 	var newPorts = make([]Port, len(ports))
 	for idx, port := range ports {
-		newPorts[idx] = Port {
+		newPorts[idx] = Port{
 			port.IP,
 			port.PrivatePort,
 			port.PublicPort,
