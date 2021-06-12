@@ -9,3 +9,4 @@ Features
 4. Execute same command to multiple containers
 5. CRON JOB for managing container(expiration, .., et cetra..)
 6. Alerts
+7. Disk management and alerting 
