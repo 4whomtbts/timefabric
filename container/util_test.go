@@ -32,12 +32,12 @@ func TestResolveMappingOption(t *testing.T) {
 	assert.True(t, reflect.DeepEqual(expectedDirs, dirs))
 }
 
-func TestResolveMappingOption_WHEN_invalid_mapping_option_is_provided_THEN_panic(t *testing.T) {
+func TestResolveMappingOption_WHEN_invalid_mapping_option_is_provided_THEN_PANIC(t *testing.T) {
 	assert.Panics(t, func() { resolveMappingOption(
 		"something-invalid,can't-reach-here", "mystorage") })
 }
 
-func TestResolveMappingOption_WHEN_invalid_mapping_option_is_provided_THEN_panic2(t *testing.T) {
+func TestResolveMappingOption_WHEN_invalid_mapping_option_is_provided_THEN_PANIC2(t *testing.T) {
 	assert.Panics(t, func() { resolveMappingOption(
 		":invalid-dest,invalid-src:", "mystorage") })
 }
@@ -64,7 +64,7 @@ func TestBuildMountMappingOption_WHEN_nas_Option_is_provided_THEN_returns_bindMo
 			"--mount type=bind,source=\"/a/b/yourpath/mystorage\",target=/home/aiuser ", result)
 }
 
-func TestBuildMountMappingOption_WHEN_unsupported_type_is_provided_THEN_returns_volumeMountOption(t *testing.T) {
+func TestBuildMountMappingOption_WHEN_unsupported_type_is_provided_THEN_returns_PANIC(t *testing.T) {
 	newCli := NewContainerClient(&config.TimeFabricConfig{
 		StorageConfig: config.StorageConfig{
 			StorageType: "illegal!!!!",

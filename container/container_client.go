@@ -22,7 +22,7 @@ func NewContainerClient(globalConfig *config.TimeFabricConfig, containerConfig *
 	dockerClient, err := client.NewClientWithOpts(client.FromEnv)
 	ctx := context.Background()
 	if err != nil {
-		log.Error("failed to create docker client")
+		log.Error("failed to create docker node")
 		panic(err)
 	}
 

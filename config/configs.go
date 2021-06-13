@@ -3,6 +3,8 @@ package config
 import "github.com/4whomtbts/timefabric/common"
 
 type TimeFabricConfig struct {
+	NodeId int32 `yaml:"nodeId"`
+	NodeName string `yaml:"nodeName"`
 	MasterServer string `yaml:"masterServer"`
 	MasterAllocation bool `yaml:"masterAlloc"`
 	NetworkConfig NetworkConfig `yaml:"network"`
@@ -21,8 +23,8 @@ type NetworkConfig struct {
 	 * NetworkConfig could be either nat or internal
 	 * If two or more timefabric clients located behind same firewall or router
 	 * They must have been allocated mutually different port range
-	 * So, timefabric should identify range of port that current client is allocated to avoid
-	 * allocating unreachable port for current client(Because NAT configuration doesn't allow traffic to flow in).
+	 * So, timefabric should identify range of port that current node is allocated to avoid
+	 * allocating unreachable port for current node(Because NAT configuration doesn't allow traffic to flow in).
 	 */
 	NetworkType string `yaml:"type"`
 	PortRange string `yaml:"portRange"` // port ranges to be allocated for new container
